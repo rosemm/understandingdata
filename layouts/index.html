@@ -1,0 +1,49 @@
+{{ partial "head.html" . }}
+<body class="{{ .Site.Params.themeColor }} {{if .Site.Params.layoutReverse}}layout-reverse{{end}}">
+
+{{ partial "sidebar.html" . }}
+
+    <div class="content container">
+
+      <div class="post">
+        <h1>Welcome</h1>
+        
+            <p>I provide professional consultation for research design and data analysis. I have extensive experience with applied statistics, including teaching, consulting, and use in my own research.</p>
+<p>I can help make sure you get the best evidence you can to answer the questions you want answered. I help my clients connect their ideas to data at every stage of the process, including study design, survey design and assessment, data cleaning, selecting appropriate analysis techniques, implementation, and interpretation of results.</p>
+
+<p>I look forward to helping you understand your data!</p>
+
+      </div>
+
+      
+      <img src="https://s3.amazonaws.com/www.understandingdata.net/blog.jpg" id="blog">
+
+      <div class="posts">
+    {{ $paginator := .Paginate (where .Data.Pages "Type" "post") }}
+    {{ range $paginator.Pages }}
+    <div class="post">
+      <h1 class="post-title">
+        <a href="{{ .Permalink }}">{{ .Title }}</a>
+      </h1>
+      <span class="post-date">{{ .Date.Format "Jan 2, 2006" }}{{ if not .Site.Params.hideReadingTime }} &middot; {{ .ReadingTime }} minute read{{ end }}{{ if .Site.DisqusShortname }} &middot; <a href="{{ .Permalink }}#disqus_thread">Comments</a>{{ end }}
+      {{ if isset .Params "categories" }}
+      <br/>
+      {{ range .Params.categories }}<a class="label" href="{{ "/categories/" | absURL }}{{ . | urlize }}">{{ . }}</a>{{ end }}
+      {{ end }}</span>
+      {{ if eq .Site.Params.truncate false }}
+      {{ .Content }}
+      {{ else if .Description }}
+      <p>{{ .Description }}</p>
+      <a href="{{ .Permalink }}">Read On &rarr;</a>
+      {{ else }}
+      {{ .Summary }}
+      {{ if .Truncated }}<a href="{{ .Permalink }}">Read On &rarr;</a>{{ end }}
+      {{ end }}
+    </div>
+    {{ end }}
+    {{ template "_internal/pagination.html" . }}
+  </div>
+</div>
+
+  </body>
+</html>
