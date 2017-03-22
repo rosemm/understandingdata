@@ -44,7 +44,16 @@ html {
     font-size: 20px;
   }
 }
-
+/*Controls how blocks of code are displayed*/
+pre {
+    font-size: .75rem;
+}
+/*Controls how math is displayed*/
+code.has-jax {font: inherit;
+              font-size: 100%;
+              background: inherit;
+              border: inherit;
+              color: black;}
 
 /*
  * Sidebar
@@ -177,14 +186,6 @@ a.sidebar-nav-item:focus {
 
 /* Base16 (http://chriskempson.github.io/base16/#default) */
 
-/* Red */
-.theme-rose .sidebar {
-  background-color: #ac4142;
-}
-.theme-rose .content a,
-.theme-rose .related-posts li a:hover {
-  color: #ac4142;
-}
 
 /* Red */
 .theme-base-08 .sidebar {
