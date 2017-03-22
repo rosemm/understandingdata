@@ -46,7 +46,7 @@ html {
 }
 /*Controls how blocks of code are displayed*/
 pre {
-    font-size: .75rem;
+    font-size: .7rem;
 }
 /*Controls how math is displayed*/
 code.has-jax {font: inherit;
