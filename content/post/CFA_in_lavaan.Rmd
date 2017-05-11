@@ -69,13 +69,15 @@ head(HolzingerSwineford1939)
 
 Note that because CFAs (and all SEM models) are based on the covariances among variances, they are susceptible to the effects of violations to the assumption of normality (especially skew and outliers), which can strongly affect covariances. Before running your model, you should examine your variables to check that there are no serious deviations from normality. The MVN package provides a handy function for plotting this (as well as lots of other useful tests and plots --- [check out the MVN vingette for examples](https://cran.r-project.org/web/packages/MVN/vignettes/MVN.pdf)).
 
-```{r, message=FALSE, warning=FALSE}
+```{r, eval=FALSE}
 library(MVN)
 # pull out just the variables we're using (x1-x9)
 x_vars <- HolzingerSwineford1939[,paste("x", 1:9, sep="")]
 
 uniPlot(x_vars, type = "histogram")
 ```
+
+![](https://s3.amazonaws.com/www.understandingdata.net/CFA_histograms.png)
 
 Some of these variables are note quite normal (e.g. `x6` definitely has some positive skew), but for the most part these look acceptable. If you see drastic deviations from normality (such as skew from a ceiling or floor effect), you'll need to either transform those variables before continuing or drop them from your model. Including highly non-normal variables in your CFA model can wreck havoc on the estimation.
 
@@ -104,7 +106,7 @@ There are lots of options for controlling the way the model is interpreted, esti
 ?lavOptions
 ```
 
-The default estimator for CFA models with continuous indicators is maximum likelihood (ML), which is probably what you want. The default treatment of missing data is listwise deletion, though, which is probably not what you want. As long the estimator is ML, you can set the missingness option to full information maximum likelihood (FIML) with `missing="fiml"`, which is [more attractive](http://williammurrah.com/fiml-for-missing-data-in-lavaan-part-1-descriptive-statistics-and-correlations/). FIML will generally result in estimates [similar to what you would get with multiple imputation](https://www.iriseekhout.com/missing-data/missing-data-methods/full-information-maximum-likelihood/), but with the added advantage that it's all done in one step instead of needing to do imputation, analysis, and pooling of estimates in three steps. 
+The default estimator for CFA models with continuous indicators is maximum likelihood (ML), which is probably what you want. The default treatment of missing data is listwise deletion, though, which is probably not what you want. As long the estimator is ML, you can set the missingness option to full information maximum likelihood (FIML) with `missing="fiml"`. FIML will generally result in estimates [similar to what you would get with multiple imputation](https://www.iriseekhout.com/missing-data/missing-data-methods/full-information-maximum-likelihood/), but with the added advantage that it's all done in one step instead of needing to do imputation, analysis, and pooling of estimates in three steps. 
 
 Latent factors aren't measured, so they don't naturally have any scale. In order to come up with a unique solution, though, the estimator needs to have some scale for them. One solution is to set each latent factor's scale to the scale of its first indicator --- this is lavaan's default behavior. Another option is to constrain the latent factors to have a mean of 0 and a variance of 1 (i.e. to standardize them). Although both approaches will give you equivalent results, I prefer the second option because it forces the latent covariances to be correlations, which is handy for interpretation. It also means you don't have to give up the test of the loading of the first indicator for each factor. You can control this behavior by setting `std.lv=TRUE` when you call `cfa()`.
 
@@ -142,7 +144,7 @@ This produces a lot of output, so we'll look at it piece by piece, and then use 
 
 #### Fit Indices: Does your model fit your data?
 
-You'll see quite a few fit indices, and you certainly don't need to report all of them. There are plenty of [good resources](http://davidakenny.net/cm/fit.htm) that go into much more detail about each of these, so I'll just point out a few of the most useful and widely-used measures.
+You'll see quite a few fit indices, and you certainly don't need to report all of them. There are plenty of [good resources that go into much more detail about each of these](http://davidakenny.net/cm/fit.htm), so I'll just point out a few of the most useful and widely-used measures.
 
 ```{r, eval=FALSE}
 > summary(fit, fit.measures=TRUE, standardized=TRUE)
@@ -445,10 +447,14 @@ If you don't have much missingness, then the problem is likely due to insufficie
 lavaan WARNING: some observed variances are (at least) a factor 1000 times larger than others; use varTable(fit) to investigate
 ```
 
+If you have indicator variables on very different scales, that can make the covariance matrix problematic. An easy fix is to standardize some or all of your variables before fitting the model with the `scale` function. 
+
 ```{r, eval=FALSE}
 lavaan WARNING: could not compute standard errors!
 lavaan NOTE: this may be a symptom that the model is not identified.
 ```
+
+If the model is not identified, that generally means its too complex given the amount of information in the covariance matrix. Note that increasing your N won't help here --- you actually need more indicators, or to reduce the complexity of the model. 
 
 
 <h3 id="refs">References and Further Reading</h3>
@@ -460,5 +466,5 @@ Interpreting CFA output (from mplus): [Notes from IDRE](http://stats.idre.ucla.e
 
 For conducting power analyses for CFA or other SEM models, check out the [simsem package](http://simsem.org/), designed to work elegantly with `lavaan`. 
 
-You can automatically generate path diagrams from your lavaan models. For a quick review of a few tools for doing that, see [this appendix](https://blogs.baylor.edu/rlatentvariable/files/2015/09/AppendixCreatingPathModels-21y1cyz.pdf) to Beaujean (2014)
+You can automatically generate path diagrams from your lavaan models. For a quick review of a few tools for doing that, see [this appendix](https://blogs.baylor.edu/rlatentvariable/files/2015/09/AppendixCreatingPathModels-21y1cyz.pdf) to Beaujean (2014).
 

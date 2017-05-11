@@ -124,7 +124,7 @@ examples](https://cran.r-project.org/web/packages/MVN/vignettes/MVN.pdf)).
 
     uniPlot(x_vars, type = "histogram")
 
-![](CFA_in_lavaan_files/figure-markdown_strict/unnamed-chunk-5-1.png)
+![](https://s3.amazonaws.com/www.understandingdata.net/CFA_histograms.png)
 
 Some of these variables are note quite normal (e.g. `x6` definitely has
 some positive skew), but for the most part these look acceptable. If you
@@ -177,10 +177,8 @@ maximum likelihood (ML), which is probably what you want. The default
 treatment of missing data is listwise deletion, though, which is
 probably not what you want. As long the estimator is ML, you can set the
 missingness option to full information maximum likelihood (FIML) with
-`missing="fiml"`, which is [more
-attractive](http://williammurrah.com/fiml-for-missing-data-in-lavaan-part-1-descriptive-statistics-and-correlations/).
-FIML will generally result in estimates [similar to what you would get
-with multiple
+`missing="fiml"`. FIML will generally result in estimates [similar to
+what you would get with multiple
 imputation](https://www.iriseekhout.com/missing-data/missing-data-methods/full-information-maximum-likelihood/),
 but with the added advantage that it's all done in one step instead of
 needing to do imputation, analysis, and pooling of estimates in three
@@ -246,10 +244,10 @@ output individually.
 #### Fit Indices: Does your model fit your data?
 
 You'll see quite a few fit indices, and you certainly don't need to
-report all of them. There are plenty of [good
-resources](http://davidakenny.net/cm/fit.htm) that go into much more
-detail about each of these, so I'll just point out a few of the most
-useful and widely-used measures.
+report all of them. There are plenty of [good resources that go into
+much more detail about each of
+these](http://davidakenny.net/cm/fit.htm), so I'll just point out a few
+of the most useful and widely-used measures.
 
     > summary(fit, fit.measures=TRUE, standardized=TRUE)
     ...
@@ -967,11 +965,11 @@ variables are provided in Table 1.
 <tbody>
 <tr class="odd">
 <td align="left">x1</td>
-<td align="right">4.94</td>
-<td align="right">1.17</td>
+<td align="right">4.91</td>
+<td align="right">1.16</td>
 <td align="right">0.67</td>
 <td align="right">8.50</td>
-<td align="right">0.00</td>
+<td align="right">6.64</td>
 </tr>
 <tr class="even">
 <td align="left">x2</td>
@@ -991,48 +989,48 @@ variables are provided in Table 1.
 </tr>
 <tr class="even">
 <td align="left">x4</td>
-<td align="right">3.05</td>
-<td align="right">1.17</td>
+<td align="right">3.06</td>
+<td align="right">1.16</td>
 <td align="right">0.00</td>
 <td align="right">6.33</td>
-<td align="right">3.32</td>
+<td align="right">0.00</td>
 </tr>
 <tr class="odd">
 <td align="left">x5</td>
-<td align="right">4.33</td>
-<td align="right">1.30</td>
+<td align="right">4.31</td>
+<td align="right">1.28</td>
 <td align="right">1.00</td>
-<td align="right">7.00</td>
-<td align="right">3.32</td>
+<td align="right">6.75</td>
+<td align="right">6.64</td>
 </tr>
 <tr class="even">
 <td align="left">x6</td>
-<td align="right">2.21</td>
+<td align="right">2.17</td>
 <td align="right">1.11</td>
 <td align="right">0.14</td>
 <td align="right">6.14</td>
-<td align="right">6.64</td>
+<td align="right">3.32</td>
 </tr>
 <tr class="odd">
 <td align="left">x7</td>
 <td align="right">4.20</td>
-<td align="right">1.10</td>
+<td align="right">1.09</td>
 <td align="right">1.30</td>
 <td align="right">7.43</td>
-<td align="right">9.63</td>
+<td align="right">6.31</td>
 </tr>
 <tr class="even">
 <td align="left">x8</td>
-<td align="right">5.55</td>
-<td align="right">1.02</td>
+<td align="right">5.53</td>
+<td align="right">1.01</td>
 <td align="right">3.05</td>
 <td align="right">10.00</td>
 <td align="right">6.64</td>
 </tr>
 <tr class="odd">
 <td align="left">x9</td>
-<td align="right">5.36</td>
-<td align="right">1.01</td>
+<td align="right">5.37</td>
+<td align="right">1.02</td>
 <td align="right">2.78</td>
 <td align="right">9.25</td>
 <td align="right">6.64</td>
@@ -1316,37 +1314,15 @@ Notes:
     ## 
     ## other attached packages:
     ## [1] tidyr_0.6.0        dplyr_0.5.0        knitr_1.15.1      
-    ## [4] MVN_4.0.2          lavaan_0.5-23.1097
+    ## [4] lavaan_0.5-23.1097
     ## 
     ## loaded via a namespace (and not attached):
-    ##  [1] splines_3.3.1         moments_0.14          assertthat_0.1       
-    ##  [4] highr_0.6             sp_1.2-3              stats4_3.3.1         
-    ##  [7] mvoutlier_2.0.8       yaml_2.1.14           robustbase_0.92-6    
-    ## [10] pbivnorm_0.6.0        backports_1.0.4       VIM_4.6.0            
-    ## [13] lattice_0.20-33       quantreg_5.29         quadprog_1.5-5       
-    ## [16] chron_2.3-47          digest_0.6.10         RColorBrewer_1.1-2   
-    ## [19] minqa_1.2.4           colorspace_1.3-2      psych_1.6.9          
-    ## [22] htmltools_0.3.5       Matrix_1.2-6          plyr_1.8.4           
-    ## [25] pcaPP_1.9-61          SparseM_1.72          mvtnorm_1.0-5        
-    ## [28] scales_0.4.1          lme4_1.1-12           MatrixModels_0.4-1   
-    ## [31] tibble_1.2            mgcv_1.8-12           car_2.1-3            
-    ## [34] ggplot2_2.2.0         nnet_7.3-12           lazyeval_0.2.0       
-    ## [37] pbkrtest_0.4-6        mnormt_1.5-5          magrittr_1.5         
-    ## [40] mclust_5.2            evaluate_0.10         GGally_1.3.0         
-    ## [43] laeken_0.4.6          nlme_3.1-128          MASS_7.3-45          
-    ## [46] foreign_0.8-66        class_7.3-14          tools_3.3.1          
-    ## [49] data.table_1.9.6      trimcluster_0.1-2     stringr_1.1.0        
-    ## [52] kernlab_0.9-24        munsell_0.4.3         cluster_2.0.4        
-    ## [55] fpc_2.1-10            sgeostat_1.0-27       pls_2.6-0            
-    ## [58] e1071_1.6-7           vcd_1.4-1             grid_3.3.1           
-    ## [61] nloptr_1.0.4          cvTools_0.3.2         rmarkdown_1.2        
-    ## [64] boot_1.3-18           gtable_0.2.0          DBI_0.5-1            
-    ## [67] flexmix_2.3-13        reshape_0.8.6         R6_2.2.0             
-    ## [70] rrcov_1.4-3           robCompositions_2.0.3 zoo_1.7-13           
-    ## [73] prabclus_2.2-6        sROC_0.1-2            nortest_1.0-4        
-    ## [76] rprojroot_1.1         modeltools_0.2-21     stringi_1.1.2        
-    ## [79] parallel_3.3.1        Rcpp_0.12.8           DEoptimR_1.0-6       
-    ## [82] diptest_0.75-7        lmtest_0.9-34
+    ##  [1] Rcpp_0.12.8     quadprog_1.5-5  assertthat_0.1  digest_0.6.10  
+    ##  [5] rprojroot_1.1   R6_2.2.0        DBI_0.5-1       backports_1.0.4
+    ##  [9] stats4_3.3.1    magrittr_1.5    evaluate_0.10   highr_0.6      
+    ## [13] stringi_1.1.2   lazyeval_0.2.0  pbivnorm_0.6.0  rmarkdown_1.2  
+    ## [17] tools_3.3.1     stringr_1.1.0   yaml_2.1.14     mnormt_1.5-5   
+    ## [21] htmltools_0.3.5 tibble_1.2
 
 ### Troubleshooting
 
@@ -1394,8 +1370,18 @@ designs with and without missingness, see [Wolf et al.,
 
     lavaan WARNING: some observed variances are (at least) a factor 1000 times larger than others; use varTable(fit) to investigate
 
+If you have indicator variables on very different scales, that can make
+the covariance matrix problematic. An easy fix is to standardize some or
+all of your variables before fitting the model with the `scale`
+function.
+
     lavaan WARNING: could not compute standard errors!
     lavaan NOTE: this may be a symptom that the model is not identified.
+
+If the model is not identified, that generally means its too complex
+given the amount of information in the covariance matrix. Note that
+increasing your N won't help here --- you actually need more indicators,
+or to reduce the complexity of the model.
 
 <h3 id="refs">
 References and Further Reading
@@ -1417,4 +1403,4 @@ For conducting power analyses for CFA or other SEM models, check out the
 You can automatically generate path diagrams from your lavaan models.
 For a quick review of a few tools for doing that, see [this
 appendix](https://blogs.baylor.edu/rlatentvariable/files/2015/09/AppendixCreatingPathModels-21y1cyz.pdf)
-to Beaujean (2014)
+to Beaujean (2014).
