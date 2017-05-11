@@ -61,7 +61,7 @@ metaDataFormat = "yaml"
     home = "Home"
 
     # Metadata used to drive integrations.
-    googleAnalytics = ""
+    googleAnalytics = "UA-96182710-1"
     gravatarHash = ""
 
     # Sidebar social links, these must be full URLs.
