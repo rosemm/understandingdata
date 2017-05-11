@@ -20,6 +20,8 @@ devtools::install_github(repo="rosemm/rexamples", subdir = "pkg")
 library(rexamples) # to load the package
 ```
 
+I'm available to help you with R code live by the minute via hackhands: [https://hackhands.com/rosemm/](https://hackhands.com/rosemm/) The first five minutes are free, so give it a try! :)
+
 My answers on Cross Validated, the statistics stackexchange: [http://stats.stackexchange.com/users/131407/rose-hartman?tab=answers](http://stats.stackexchange.com/users/131407/rose-hartman?tab=answers)
 
 My RPubs documents, most of which were written up with my students in mind when I was teaching stats at the University of Oregon: [https://rpubs.com/rosemm](https://rpubs.com/rosemm)
