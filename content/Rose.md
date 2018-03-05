@@ -12,3 +12,5 @@ No matter what software you're using, I can always help with deciding what tests
 
 The only thing I love more than analyzing data is teaching statistics, so you can be sure I won't just dump you with a bunch of output you don't understand. My goal is for you to have the cleanest, most direct statistical approach to address your hypotheses, and for you to walk away with a clear sense of how your evidence relates to your research question.
 Whether you want someone to walk you through the basics, or you're a stats whiz just looking to get another set of eyes on your analyses before submitting a manuscript for publication, I can provide support at the level you need.
+
+This website is relatively new, but I've been writing about stats and data analysis online for a while. [You can find links to my writing and tutorials elsewhere on the web in my first blog post](http://www.understandingdata.net/2017/03/21/rose-elsewhere-on-the-web/). 
